@@ -2,7 +2,7 @@
 #include "kernel/fcntl.h"
 #include "user/user.h"
 
-#define MAX_PRIMES 130
+#define MAX_PRIMES 280
 
 void debug(int* p, int count) {
   printf("pid=%d, count=%d, ", getpid(), count);
