@@ -2,7 +2,7 @@
 #include "kernel/fcntl.h"
 #include "user/user.h"
 
-#define MAX_PRIMES 42
+#define MAX_PRIMES 130
 
 void debug(int* p, int count) {
   printf("pid=%d, count=%d, ", getpid(), count);
@@ -13,7 +13,7 @@ void debug(int* p, int count) {
 }
 
 void sieve(const int pr) {
-  int primes[MAX_PRIMES];
+  int *primes = malloc(MAX_PRIMES * sizeof(int));
   int count = 0;
   int p = 0;
 
@@ -22,7 +22,7 @@ void sieve(const int pr) {
   }
   close(pr);
 
-  debug(primes, count);
+  // debug(primes, count);
 
   if (count == 0) {
     printf("No primes found\n");
@@ -65,6 +65,7 @@ void sieve(const int pr) {
       }
     }
     close(npw);
+    free(primes);
     wait(0);
   }
   else {
