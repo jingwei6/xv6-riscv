@@ -104,4 +104,9 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+
+  // mask for sys calls in syscall.h, for example
+  // mask for SYS_fork = 1 << SYS_fork
+  // mask for SYS_exit = 1 << SYS_exit
+  int tracemask;
 };
